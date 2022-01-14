@@ -12,7 +12,6 @@
                 let height = await provider.getBlockNumber();
                 if(network.name != "ropsten"){
                     alert("You are not connected to the ropsten network!");
-                    
                     document.getElementById("blockHeight").innerHTML = height;
                     document.getElementById("network").style.color="#FF0000";
                     document.getElementById("network").innerHTML = network.name;
