@@ -1,0 +1,38 @@
+<HTML>
+    <head>
+
+    </head>
+    <body>
+        <script type="module">
+            import { ethers } from "./ethers.js";
+            
+            async function button_clicked(){
+                const provider = new ethers.providers.Web3Provider(window.ethereum);
+                let network = await provider.getNetwork();
+                let height = await provider.getBlockNumber();
+                if(network.name != "ropsten"){
+                    alert("You are not connected to the ropsten network!");
+                    
+                    document.getElementById("blockHeight").innerHTML = height;
+                    document.getElementById("network").style.color="#FF0000";
+                    document.getElementById("network").innerHTML = network.name;
+                }
+                else{
+                    document.getElementById("blockHeight").innerHTML = height;
+                    document.getElementById("network").style.color="#000000";
+                    document.getElementById("network").innerHTML = network.name;
+                }
+            }
+
+            let btn = document.getElementById("button");
+            btn.addEventListener("click", button_clicked);
+        </script>
+
+    <button id="button">Get the blockheight</button>
+    <div>
+        <h1>Current Blockheight:</h1>
+        <h2 id="blockHeight"></h2>
+    </div>
+
+    </body>
+</HTML>
